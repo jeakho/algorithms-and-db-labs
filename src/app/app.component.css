@@ -1,32 +1,31 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 span {
     margin-left: 1rem;
 }
 
-mat-toolbar {
+.app-toolbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+    z-index: 998;
 }
 
-mat-sidenav {
-    width: 200px;
+.mat-sidenav-container {
+    flex: 1;
 }
 
-:host /deep/ .mat-sidenav-container {
+/* .mat-sidenav-content {
+    position: relative;
+} */
+
+:host /deep/ .mat-sidenav {
     margin-top: 64px;
-}
-
-mat-sidenav-container {
-    height: 100%;
-    width: 100%;
-}
-
-mat-sidenav-content {
-    width: 100%;
-}
-
-mat-nav-list {
-    margin-top: 1rem;
+    width: 200px
 }

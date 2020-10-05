@@ -1,21 +1,27 @@
-<mat-toolbar color="primary" class="mat-elevation-z5">
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Laboratory works</span>
-</mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over">
-
-    <mat-nav-list>
-      <a mat-list-item href="/lab2">Lab work 2</a>
-      <a mat-list-item href="/lab3">Lab work 3</a>
-      <a mat-list-item href="/lab4">Lab work 4</a>
-    </mat-nav-list>
-
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="app-container">
+  <mat-toolbar color="primary" class="mat-elevation-z5 app-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Laboratory works</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="mat-sidenav-container">
+    <mat-sidenav #sidenav mode="over" fixedTopGap="56">
+  
+      <mat-nav-list>
+        <a mat-list-item href="/lab2">Lab work 2</a>
+        <a mat-list-item href="/lab3">Lab work 3</a>
+        <a mat-list-item href="/lab4">Lab work 4</a>
+      </mat-nav-list>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 100%;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

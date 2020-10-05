@@ -2,6 +2,18 @@
   overflow: hidden;
 }
 
+.tab1-wrapper {
+  position: fixed;
+  
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 .empty-list-message {
   color: rgba(0, 0, 0, 0.38); 
   margin: 0px;
