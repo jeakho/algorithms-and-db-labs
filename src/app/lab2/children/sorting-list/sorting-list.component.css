@@ -1,0 +1,41 @@
+mat-card-title {
+    text-align: center;
+}
+    
+.manipulations-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+.manipulations-card {
+    display: flex;
+    flex-direction: column;
+    width: 90%; 
+    height: 90%
+}
+    
+.manipulations-card-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+    
+.manipulations-card-actions-button {
+    width: 100%
+}
+    
+.options {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+    
+mat-radio-button {
+    margin: 5px;
+}

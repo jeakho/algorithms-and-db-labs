@@ -1,0 +1,35 @@
+<form class="manipulations-form" [formGroup]="removingNodesForm" (ngSubmit)="processRemoval()">
+    <mat-card class="manipulations-card">
+        <mat-card-title>
+            Removing Nodes
+        </mat-card-title>
+    
+        <mat-card-content flex class="manipulations-card-content">
+            <label style="margin-top: 25px;">Position to remove nodes from:</label>
+            <mat-radio-group formControlName="selectedRadio" class="options" color="primary">
+
+                <mat-radio-button [value]="0">Beginning</mat-radio-button>
+                <mat-radio-button [value]="1">End</mat-radio-button>
+                <mat-radio-button [value]="2">Custom</mat-radio-button>
+
+            </mat-radio-group>
+
+            <mat-form-field>
+                <mat-label>Position to remove from</mat-label>
+                <input matInput required formControlName="removingPosition" placeholder="Ex. 1">
+                <mat-error *ngIf="removingPosition.invalid && removingPosition.errors.required">Required field</mat-error>
+                <mat-error *ngIf="removingPosition.invalid && removingPosition.errors.pattern">Must be a number</mat-error>
+            </mat-form-field>
+
+            <mat-slide-toggle color="primary" formControlName="isCyclic">Сyclic</mat-slide-toggle>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-raised-button color="primary"
+                type="submit"
+                [disabled]="!removingNodesForm.valid"
+                class="manipulations-card-actions-button"
+            >Remove</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

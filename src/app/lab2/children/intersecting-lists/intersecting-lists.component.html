@@ -1,0 +1,24 @@
+<form class="manipulations-form" [formGroup]="intersectingListsForm" (ngSubmit)="processIntersecting()">
+    <mat-card class="manipulations-card">
+        <mat-card-title>
+            Intersecting Lists
+        </mat-card-title>
+    
+        <mat-card-content flex class="manipulations-card-content">
+            <mat-form-field>
+                <mat-label>New list nodes</mat-label>
+                <input matInput required formControlName="nodeValuesStr" placeholder="Ex. 1, 2, 3">
+                <mat-error *ngIf="nodeValuesStr.invalid && nodeValuesStr.errors.required">Required field</mat-error>
+                <mat-error *ngIf="nodeValuesStr.invalid && nodeValuesStr.errors.pattern">Must contain only number, space or comma characters</mat-error>
+            </mat-form-field>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-raised-button color="primary"
+                type="submit"
+                [disabled]="!intersectingListsForm.valid"
+                class="manipulations-card-actions-button"
+            >Intersect lists</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

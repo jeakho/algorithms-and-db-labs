@@ -1,0 +1,24 @@
+<form class="manipulations-form" [formGroup]="sortingListForm" (ngSubmit)="processSorting()">
+    <mat-card class="manipulations-card">
+        <mat-card-title>
+            Sorting List
+        </mat-card-title>
+    
+        <mat-card-content flex class="manipulations-card-content">
+            <label style="margin-top: 25px;">Sorting order:</label>
+            <mat-radio-group formControlName="order" class="options" color="primary">
+
+                <mat-radio-button [value]="0">Ascending</mat-radio-button>
+                <mat-radio-button [value]="1">Descending</mat-radio-button>
+
+            </mat-radio-group>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-raised-button color="primary"
+                type="submit"
+                class="manipulations-card-actions-button"
+            >Sort</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

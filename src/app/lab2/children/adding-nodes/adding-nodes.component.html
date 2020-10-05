@@ -1,0 +1,43 @@
+<form [formGroup]="addingNodesForm" class="manipulations-form" (ngSubmit)="processAddition()">
+    <mat-card class="manipulations-card">
+        <mat-card-title class="manipulations-card-title">
+            Adding Nodes
+        </mat-card-title>
+
+        <mat-card-content class="manipulations-card-content">
+            <mat-form-field appearance="fill">
+                <mat-label>Node values</mat-label>
+                <input type="text" formControlName="nodeValues" matInput required
+                    placeholder="Ex. 1, 2, 3"
+                >
+                <mat-error *ngIf="nodeValues.invalid && nodeValues.errors.required">Required field</mat-error>
+                <mat-error *ngIf="nodeValues.invalid && nodeValues.errors.pattern">Must contain only number, space or comma characters</mat-error>
+            </mat-form-field>
+
+            <label style="margin-top: 25px;">Position to add nodes to:</label>
+            <mat-radio-group formControlName="selectedRadio" class="options" color="primary">
+
+                <mat-radio-button [value]="0">Beginning</mat-radio-button>
+                <mat-radio-button [value]="1">End</mat-radio-button>
+                <mat-radio-button [value]="2">Custom</mat-radio-button>
+
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>Position</mat-label>
+                <input type="text" matInput required formControlName="insertionPosition"
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="insertionPosition.invalid && insertionPosition.errors.required">Required field</mat-error>
+                <mat-error *ngIf="insertionPosition.invalid && insertionPosition.errors.pattern">Position must be a number</mat-error>
+            </mat-form-field>
+            
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!addingNodesForm.valid"
+                class="manipulations-card-actions-button"
+                style="width: 100%;">Add</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
