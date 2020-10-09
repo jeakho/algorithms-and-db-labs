@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
-import { nodeValuesValidator } from '../../src/validation-rules/multiple-values.validation'
-
 import { compact } from 'lodash'
+import { Subscription } from 'rxjs';
 
 interface IAddingNodesModel {
   nodeValuesStr: string,
@@ -16,13 +15,14 @@ interface IAddingNodesModel {
   templateUrl: './adding-nodes.component.html',
   styleUrls: ['./adding-nodes.component.css']
 })
-export class AddingNodesComponent implements OnInit {
+export class AddingNodesComponent implements OnInit, OnDestroy {
   @Input() model: IAddingNodesModel
   @Input() linkedListLength: number
 
   @Output() addition = new EventEmitter<{ position: number, values: number[] }>();
 
   addingNodesForm: FormGroup;
+  private subscriptions: Subscription[] = []
 
 
   constructor(
@@ -53,9 +53,9 @@ export class AddingNodesComponent implements OnInit {
       insertionPosition: [{ value: this.model.insertionPosition, disabled: this.isInsertionPositionDisabled() }, [Validators.pattern(/^-?\d+$/)]]
     });
 
-    this.addingNodesForm.get("nodeValues").valueChanges.subscribe(nodeValuesStr => { this.model.nodeValuesStr = nodeValuesStr })
+    this.subscriptions.push(this.addingNodesForm.get("nodeValues").valueChanges.subscribe(nodeValuesStr => { this.model.nodeValuesStr = nodeValuesStr }))
 
-    this.addingNodesForm.get("selectedRadio").valueChanges.subscribe(selectedRadio => {
+    this.subscriptions.push(this.addingNodesForm.get("selectedRadio").valueChanges.subscribe(selectedRadio => {
       this.model.selectedRadio = selectedRadio;
       this.model.insertionPosition = selectedRadio !== 0 ? selectedRadio != 1 ? this.model.insertionPosition : this.linkedListLength + 1 : 1;
 
@@ -65,10 +65,16 @@ export class AddingNodesComponent implements OnInit {
         'disable' :
         'enable'
       ]();
-    });
+    }));
 
-    this.addingNodesForm.get("insertionPosition").valueChanges.subscribe(newValue => {
+    this.subscriptions.push(this.addingNodesForm.get("insertionPosition").valueChanges.subscribe(newValue => {
       this.model.insertionPosition = newValue;
+    }))
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
     })
   }
 

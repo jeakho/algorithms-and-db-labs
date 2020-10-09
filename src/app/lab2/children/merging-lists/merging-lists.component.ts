@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { compact } from 'lodash'
+import { Subscription } from 'rxjs';
 
 interface IMergingListsModel {
   nodeValuesStr: string
@@ -12,12 +13,13 @@ interface IMergingListsModel {
   templateUrl: './merging-lists.component.html',
   styleUrls: ['./merging-lists.component.css']
 })
-export class MergingListsComponent implements OnInit {
+export class MergingListsComponent implements OnInit, OnDestroy {
   @Input() model: IMergingListsModel;
 
   @Output() merging = new EventEmitter<{ nodeValues: number[] }>();
 
   mergingListsForm: FormGroup;
+  private subscriptions: Subscription[] = []
 
   constructor(
     private fb: FormBuilder
@@ -38,7 +40,13 @@ export class MergingListsComponent implements OnInit {
       nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]]
     })
 
-    this.mergingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model));
+    this.subscriptions.push(this.mergingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model)));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    })
   }
 
 }

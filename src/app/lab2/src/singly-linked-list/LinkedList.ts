@@ -1,6 +1,8 @@
 import { ILinkedList, IListNode } from '../LinkedList'
 import { ListNode } from '../ListNode'
 
+import { uniq } from 'lodash'
+
 export enum SORTING_ORDER { ASCENDING = 0, DESCENDING = 1 }
 
 export class LinkedList<T = any> implements ILinkedList<T> {
@@ -103,7 +105,7 @@ export class LinkedList<T = any> implements ILinkedList<T> {
         const currentListEntries = [...this];
         const newListEntries = [...linkedList];
 
-        const intersectionProductList = new LinkedList(...currentListEntries.filter(el => newListEntries.includes(el)));
+        const intersectionProductList = new LinkedList(...uniq(currentListEntries).filter(el => newListEntries.includes(el)));
 
         this.head = intersectionProductList.getRoot();
         this.length = intersectionProductList.length;

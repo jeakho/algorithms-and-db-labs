@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { compact } from 'lodash'
+import { Subscription } from 'rxjs';
 
 interface IIntersectingListsModel {
   nodeValuesStr: string
@@ -12,12 +13,13 @@ interface IIntersectingListsModel {
   templateUrl: './intersecting-lists.component.html',
   styleUrls: ['./intersecting-lists.component.css']
 })
-export class IntersectingListsComponent implements OnInit {
+export class IntersectingListsComponent implements OnInit, OnDestroy {
   @Input() model: IIntersectingListsModel;
 
   @Output() intersecting = new EventEmitter<{ nodeValues: number[] }>();
 
   intersectingListsForm: FormGroup;
+  private subscriptions: Subscription[] = []
 
   constructor(
     private fb: FormBuilder
@@ -38,7 +40,13 @@ export class IntersectingListsComponent implements OnInit {
       nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]]
     })
 
-    this.intersectingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model));
+    this.subscriptions.push(this.intersectingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model)));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    })
   }
 
 }

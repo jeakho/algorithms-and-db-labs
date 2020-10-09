@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 interface IMovingNodesModel {
   positionToMoveFrom: number,
@@ -11,12 +12,13 @@ interface IMovingNodesModel {
   templateUrl: './moving-nodes.component.html',
   styleUrls: ['./moving-nodes.component.css']
 })
-export class MovingNodesComponent implements OnInit {
+export class MovingNodesComponent implements OnInit, OnDestroy {
   @Input() model: IMovingNodesModel
 
   @Output() moving = new EventEmitter<{ positionToMoveFrom: number, positionsToMove: number }>()
 
   movingNodesForm: FormGroup
+  private subscriptions: Subscription[] = []
 
   constructor(
     private fb: FormBuilder
@@ -40,9 +42,15 @@ export class MovingNodesComponent implements OnInit {
       positionsToMove: [this.model.positionsToMove, [Validators.required, Validators.pattern(/^-?\d+$/)]]
     })
 
-    this.movingNodesForm.valueChanges.subscribe(model => {
+    this.subscriptions.push(this.movingNodesForm.valueChanges.subscribe(model => {
       Object.assign(this.model, { positionToMoveFrom: +model.positionToMoveFrom, positionsToMove: +model.positionsToMove })
-    });
+    }));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    })
   }
 
 }

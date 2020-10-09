@@ -1,6 +1,6 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 interface IRemovingNodesModel {
   removingPosition: number,
@@ -14,13 +14,14 @@ interface IRemovingNodesModel {
   templateUrl: './removing-nodes.component.html',
   styleUrls: ['./removing-nodes.component.css']
 })
-export class RemovingNodesComponent implements OnInit {
+export class RemovingNodesComponent implements OnInit, OnDestroy {
   @Input() model: IRemovingNodesModel
   @Input() linkedListLength: number
 
   @Output() removal = new EventEmitter<{ position: number, isCyclic: boolean }>();
 
   removingNodesForm: FormGroup
+  private subscriptions: Subscription[] = []
 
   constructor(
     private fb: FormBuilder
@@ -45,13 +46,13 @@ export class RemovingNodesComponent implements OnInit {
       isCyclic: [this.model.isCyclic]
     })
 
-    this.removingNodesForm.get('isCyclic').valueChanges.subscribe(isCyclic => {
+    this.subscriptions.push(this.removingNodesForm.get('isCyclic').valueChanges.subscribe(isCyclic => {
       Object.assign(this.model, { isCyclic: isCyclic });
-    });
+    }));
 
-    this.removingNodesForm.get('removingPosition').valueChanges.subscribe(removingPosition => {Object.assign(this.model, { removingPosition: +removingPosition }) })
+    this.subscriptions.push(this.removingNodesForm.get('removingPosition').valueChanges.subscribe(removingPosition => {Object.assign(this.model, { removingPosition: +removingPosition }) }));
     
-    this.removingNodesForm.get("selectedRadio").valueChanges.subscribe(selectedRadio => {
+    this.subscriptions.push(this.removingNodesForm.get("selectedRadio").valueChanges.subscribe(selectedRadio => {
       this.model.selectedRadio = selectedRadio;
       this.model.isCyclic = false;
       this.model.removingPosition = selectedRadio !== 0 ? selectedRadio != 1 ? this.model.removingPosition : this.linkedListLength : 1;
@@ -64,7 +65,13 @@ export class RemovingNodesComponent implements OnInit {
         'disable' :
         'enable'
       ]();
-    });
+    }));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    })
   }
 
 }
