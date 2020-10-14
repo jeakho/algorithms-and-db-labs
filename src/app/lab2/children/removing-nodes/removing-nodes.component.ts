@@ -50,7 +50,7 @@ export class RemovingNodesComponent implements OnInit, OnDestroy {
       Object.assign(this.model, { isCyclic: isCyclic });
     }));
 
-    this.subscriptions.push(this.removingNodesForm.get('removingPosition').valueChanges.subscribe(removingPosition => {Object.assign(this.model, { removingPosition: +removingPosition }) }));
+    this.subscriptions.push(this.removingNodesForm.get('removingPosition').valueChanges.subscribe(removingPosition => { Object.assign(this.model, { removingPosition: +removingPosition }) }));
     
     this.subscriptions.push(this.removingNodesForm.get("selectedRadio").valueChanges.subscribe(selectedRadio => {
       this.model.selectedRadio = selectedRadio;

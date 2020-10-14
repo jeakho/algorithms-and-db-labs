@@ -1,1 +1,49 @@
-<p>lab3 works!</p>
+<div class="fill-height fill-width lab3-main-container">
+    <div class="operations-container fill-height">
+        <mat-grid-list rowHeight="2%" cols="1">
+            <mat-grid-tile rowspan="25">
+            </mat-grid-tile>
+            <mat-grid-tile rowspan="23">
+                <div class="fill-height fill-width">
+                    <mat-grid-list rowHeight="100%" cols="4" gutterSize="15px">
+                        <mat-grid-tile>
+                            <app-adding-items class="fill-height fill-width stack-manager-pannel"></app-adding-items>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <app-removing-items class="fill-height fill-width stack-manager-pannel"></app-removing-items>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <app-swapping-items class="fill-height fill-width stack-manager-pannel"></app-swapping-items>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <app-checking-items class="fill-height fill-width stack-manager-pannel"></app-checking-items>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="representation-section-wrapper fill-height">
+        <div class="representation-wrapper">
+            <div class="state-manager-container">
+                <button mat-raised-button color="primary" class="stack-manager-control" (click)="ss.reverse()">Reverse</button>
+            </div>
+            <div class="representation-container fill-height">
+                <div *ngIf="ss.length" class="stack-representation-container">
+                    <div *ngFor="let el of reversedStack; index as ind" class="item-representation-container">
+                        <button mat-fab color="primary" disableRipple="true"
+                            class="stack-element-representation"
+                        >{{ el }}</button>
+                        <mat-icon *ngIf="ind !== ss.length - 1">keyboard_arrow_down</mat-icon>
+                    </div>
+                </div>
+                <div *ngIf="!ss.length" class="mat-display-3 empty-stack-message-container">
+                    <span class="empty-stack-message">Empty Stack</span>
+                </div>
+            </div>
+            <div class="state-manager-container">
+                <button mat-raised-button color="primary" class="stack-manager-control" (click)="ss.clear()">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>

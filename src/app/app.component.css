@@ -18,14 +18,10 @@ span {
 }
 
 .mat-sidenav-container {
-    flex: 1;
+    margin-top: 64px;
+    height: 100%;
 }
 
-/* .mat-sidenav-content {
-    position: relative;
-} */
-
 :host /deep/ .mat-sidenav {
-    margin-top: 64px;
     width: 200px
 }
