@@ -17,6 +17,10 @@ import { MergingListsComponent } from './lab2/children/merging-lists/merging-lis
 import { IntersectingListsComponent } from './lab2/children/intersecting-lists/intersecting-lists.component';
 import { SortingListComponent } from './lab2/children/sorting-list/sorting-list.component';
 import { Task2Component } from './lab2/children/task2/task2.component';
+import { AddingItemsComponent } from './lab3/children/adding-items/adding-items.component';
+import { RemovingItemsComponent } from './lab3/children/removing-items/removing-items.component';
+import { SwappingItemsComponent } from './lab3/children/swapping-items/swapping-items.component';
+import { CheckingItemsComponent } from './lab3/children/checking-items/checking-items.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { Task2Component } from './lab2/children/task2/task2.component';
     MergingListsComponent,
     IntersectingListsComponent,
     SortingListComponent,
-    Task2Component
+    Task2Component,
+    AddingItemsComponent,
+    RemovingItemsComponent,
+    SwappingItemsComponent,
+    CheckingItemsComponent
   ],
   imports: [
     BrowserModule,

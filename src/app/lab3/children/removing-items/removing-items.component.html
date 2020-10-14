@@ -1,0 +1,24 @@
+<form [formGroup]="removingItemsForm" class="manipulations-form" (ngSubmit)="processRemoval()">
+    <mat-card class="manipulations-card">
+        <mat-card-title class="manipulations-card-title">
+            Removing Items
+        </mat-card-title>
+
+        <mat-card-content class="manipulations-card-content">
+            <mat-form-field class="fill-width" style="margin-top: 11px;">
+                <mat-label>Number of items to remove</mat-label>
+                <input type="text" formControlName="itemsQuantity" matInput required
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="itemsQuantity.invalid && itemsQuantity.errors.required">Required field</mat-error>
+                <mat-error *ngIf="itemsQuantity.invalid && itemsQuantity.errors.pattern">Must contain only a number greater than or equal to 0</mat-error>
+            </mat-form-field>     
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!removingItemsForm.valid"
+                class="fill-width">Remove</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
