@@ -12,7 +12,7 @@ export class Lab3Component implements OnInit {
   constructor(
     public ss: StackService
   ) {
-    ss.push(1, 2, 3, 4, 5, 6, 7);
+    ss.push(1, 2, 3, 4, 5);
   }
 
   get reversedStack() {
