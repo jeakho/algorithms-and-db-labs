@@ -30,7 +30,7 @@ export class CheckingItemsComponent implements OnInit, OnDestroy {
   ) { }
 
   processChecking() {
-    alert(`An item with value ${this.model.itemValue} is${!this.ss.includes(+this.model.itemValue) ? ' NOT' : ''} INCLUDED in the stack`);
+    alert(`An item with value ${this.model.itemValue} is${!this.ss.includes(+this.model.itemValue) ? ' NOT' : ''} IN the stack`);
   }
 
   ngOnInit(): void {

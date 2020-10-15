@@ -2,7 +2,7 @@ export class Stack<T = number> {
     private stack: Array<T> = [];
 
     constructor(...values: T[]) {
-        this.stack.push(...values);
+        this.push(...values);
     }
 
     get top(): T | undefined {
@@ -14,7 +14,7 @@ export class Stack<T = number> {
     }
 
     push(...values: T[]): Stack<T> {
-        this.stack.push(...values);
+        values.forEach((element, ind) => { this.stack[this.length] = element });
 
         return this;
     }
@@ -30,7 +30,10 @@ export class Stack<T = number> {
     }
 
     reverse(): Stack<T> {
-        this.stack.reverse();
+        if (!this.length) return;
+
+        let leftB = 0, rightB = this.length - 1;
+        while (leftB < rightB) [this.stack[leftB], this.stack[rightB]] = [this.stack[rightB], this.stack[leftB]], leftB++, rightB--;
 
         return this;
     }
@@ -40,7 +43,11 @@ export class Stack<T = number> {
     }
 
     includes(el: T): boolean {
-        return this.stack.includes(el);
+        for (let i = 0; i < this.stack.length; i++) {
+            if (this.stack[i] === el) return true;
+        }
+
+        return false;
     }
 
     print(): void {
