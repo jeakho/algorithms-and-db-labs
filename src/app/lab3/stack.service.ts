@@ -30,7 +30,7 @@ export class StackService<T = number> {
   }
 
   reverse(): void {
-      this.stack.reverse();
+    this.stack.reverse();
   }
 
   clear(): void {
@@ -39,10 +39,6 @@ export class StackService<T = number> {
 
   includes(el: T): boolean {
     return this.stack.includes(el);
-  }
-
-  print(): void {
-    console.log(JSON.stringify(this.stack, null, 2));
   }
 
   getValues() {

@@ -1,0 +1,11 @@
+.manipulations-card-content {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-button {
+    width: 90%;
+}

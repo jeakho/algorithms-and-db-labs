@@ -1,0 +1,51 @@
+
+<form [formGroup]="swappingItemsForm" class="manipulations-form" (ngSubmit)="processSwapping()">
+    <mat-card class="manipulations-card">
+        <mat-card-title class="manipulations-card-title">
+            Swapping Items
+        </mat-card-title>
+
+        <mat-card-content class="manipulations-card-content" style="margin-top: 10px;">
+            <label style="margin-top: 10px;">First element position:</label>
+            <mat-radio-group formControlName="selectedRadio1" class="options" color="primary">
+
+                <mat-radio-button [value]="1">Beginning</mat-radio-button>
+                <mat-radio-button [value]="2">End</mat-radio-button>
+                <mat-radio-button [value]="3">Custom</mat-radio-button>
+
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>Position</mat-label>
+                <input type="text" matInput required formControlName="firstItemPosition"
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="firstItemPosition.invalid && firstItemPosition.errors.required">Required field</mat-error>
+                <mat-error *ngIf="firstItemPosition.invalid && firstItemPosition.errors.pattern">Position must be a number</mat-error>
+            </mat-form-field>
+
+            <label style="margin-top: 10px;">Second element position:</label>
+            <mat-radio-group formControlName="selectedRadio2" class="options" color="primary">
+
+                <mat-radio-button [value]="1">Beginning</mat-radio-button>
+                <mat-radio-button [value]="2">End</mat-radio-button>
+                <mat-radio-button [value]="3">Custom</mat-radio-button>
+
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>Position</mat-label>
+                <input type="text" matInput required formControlName="secondItemPosition"
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="secondItemPosition.invalid && secondItemPosition.errors.required">Required field</mat-error>
+                <mat-error *ngIf="secondItemPosition.invalid && secondItemPosition.errors.pattern">Position must be a number</mat-error>
+            </mat-form-field>
+            
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!swappingItemsForm.valid"
+                class="manipulations-card-actions-button fill-width">Swap</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,0 +1,15 @@
+<form class="manipulations-form">
+    <mat-card class="manipulations-card">
+        <mat-card-title>
+            Other operations
+        </mat-card-title>
+    
+        <mat-card-content class="manipulations-card-content">
+            <button mat-raised-button color="primary"
+                *ngFor="let operation of controllessOperations"
+                class="action-button"
+                (click)="operation.handler()"
+            >{{ operation.name }}</button>
+        </mat-card-content>
+    </mat-card>
+</form>

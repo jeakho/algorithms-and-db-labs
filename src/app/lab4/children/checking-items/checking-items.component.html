@@ -1,0 +1,25 @@
+<form [formGroup]="checkingItemsForm" class="manipulations-form" (ngSubmit)="processChecking()">
+    <mat-card class="manipulations-card">
+        <mat-card-title class="manipulations-card-title">
+            Checking Items
+        </mat-card-title>
+
+        <mat-card-content class="manipulations-card-content">
+            <mat-form-field class="fill-width" style="margin-top: 11px;">
+                <mat-label>Value to check</mat-label>
+                <input type="text" formControlName="itemValue" matInput required
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="itemValue.invalid && itemValue.errors.required">Required field</mat-error>
+                <mat-error *ngIf="itemValue.invalid && itemValue.errors.pattern">Must contain only a number</mat-error>
+            </mat-form-field>     
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!checkingItemsForm.valid"
+                class="fill-width"
+            >Check</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { StackService } from '../../stack.service';
+import { QueueService } from '../../services/queue/queue.service';
 
 interface ISwappingItemsModel {
   firstItemPosition: string,
@@ -45,14 +45,14 @@ export class SwappingItemsComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private ss: StackService,
+    private qs: QueueService,
     private fb: FormBuilder
   ) {
-    this.model.secondItemPosition = String(ss.length);
+    this.model.secondItemPosition = String(qs.queueLength);
 
     this.selectedRadioToItemPosition = {
       get 1() { return '1' },
-      get 2() { return String(ss.length) },
+      get 2() { return String(qs.queueLength) },
       get 3() { return '' }
     }
   }
@@ -66,8 +66,8 @@ export class SwappingItemsComponent implements OnInit, OnDestroy {
   }
 
   processSwapping() {
-    if (!this.ss.length) {
-      alert("The stack is emty! Nothing to swap");
+    if (!this.qs.queueLength) {
+      alert("The queue is emty! Nothing to swap");
       return;
     }
 
@@ -75,14 +75,14 @@ export class SwappingItemsComponent implements OnInit, OnDestroy {
     const secondItemPosition = +this.model.secondItemPosition;
 
     if (
-      firstItemPosition < 1 || firstItemPosition > this.ss.length ||
-      secondItemPosition < 1 || secondItemPosition > this.ss.length
+      firstItemPosition < 1 || firstItemPosition > this.qs.queueLength ||
+      secondItemPosition < 1 || secondItemPosition > this.qs.queueLength
     ) {
-      alert(`Item positions are out of range. Expected from 1 to ${this.ss.length}`);
+      alert(`Items positions are out of range. Expected from 1 to ${this.qs.queueLength}`);
       return;
     }
 
-    this.ss.switchElements(firstItemPosition - 1, secondItemPosition - 1);
+    this.qs.swapQueueItems(firstItemPosition - 1, secondItemPosition - 1);
   }
 
   ngOnInit(): void {

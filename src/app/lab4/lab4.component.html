@@ -1,1 +1,33 @@
-<p>lab4 works!</p>
+<mat-grid-list cols="1" rowHeight="4.93%" class="fill-height">
+    <mat-grid-tile rowspan="9">
+        <div *ngIf="qs.queueLength" class="queue-representation__container fill-height fill-width">
+            <div *ngFor="let el of queueItems; index as ind">
+                <button mat-fab color="primary" disableRipple="true"
+                    class="queue-representation-component">{{ el }}</button>
+                <mat-icon *ngIf="ind !== qs.queueLength - 1">keyboard_arrow_left</mat-icon>
+            </div>
+        </div>
+        <div *ngIf="!qs.queueLength" class="mat-display-3 empty-queue-message">Empty Queue</div>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="2">
+
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="9">
+        <div class="fill-height fill-width">
+            <mat-grid-list cols="4" rowHeight="fit" gutterSize="50px" class="fill-height">
+                <mat-grid-tile>
+                    <app-adding-items class="fill-height fill-width"></app-adding-items>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-swapping-items class="fill-height fill-width"></app-swapping-items>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-checking-items class="fill-height fill-width"></app-checking-items>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <app-other-operations class="fill-height fill-width"></app-other-operations>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
