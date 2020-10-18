@@ -1,0 +1,26 @@
+<form [formGroup]="addingItemsForm" class="manipulations-form" (ngSubmit)="processAddition()">
+    <mat-card class="manipulations-card">
+        <mat-card-title class="manipulations-card-title">
+            Adding Items
+        </mat-card-title>
+
+        <mat-card-content class="manipulations-card-content">
+            <mat-form-field appearance="fill" class="fill-width">
+                <mat-label>Item values</mat-label>
+                <input type="text" formControlName="itemValues" matInput required
+                    placeholder="Ex. 1, 2, 3"
+                >
+                <mat-error *ngIf="itemValues.invalid && itemValues.errors.required">Required field</mat-error>
+                <mat-error *ngIf="itemValues.invalid && itemValues.errors.pattern">Must contain only number, space or comma characters</mat-error>
+            </mat-form-field>
+            
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!addingItemsForm.valid"
+                class="manipulations-card-actions-button"
+                style="width: 100%;">Add</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

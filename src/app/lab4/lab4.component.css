@@ -1,0 +1,60 @@
+.queue-representation-component {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+.queue-representation__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+  
+.mat-fab {
+    width: 110px;
+    height: 110px;
+    font-size: 20px;
+}
+
+.empty-queue-message {
+    color: rgba(0, 0, 0, 0.38); 
+    margin: 0px;
+}
+
+:host /deep/ .mat-card-title {
+    text-align: center;
+}
+    
+:host /deep/ .manipulations-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host /deep/ .manipulations-card {
+    display: flex;
+    flex-direction: column;
+    width: 90%; 
+    height: 90%
+}
+
+:host /deep/ .manipulations-card-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+:host /deep/ .options {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+:host /deep/ .mat-radio-button {
+    margin: 5px;
+}
