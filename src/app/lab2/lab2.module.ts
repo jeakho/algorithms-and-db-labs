@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AppMaterialModule } from '@/app/app-material.module'
+import { AppMaterialModule } from "../app-material.module"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Lab2Component } from './lab2.component';
