@@ -11,7 +11,7 @@
                     placeholder="Ex. 1, 2, 3"
                 >
                 <mat-error *ngIf="nodeValues.invalid && nodeValues.errors.required">Required field</mat-error>
-                <mat-error *ngIf="nodeValues.invalid && nodeValues.errors.pattern">Must contain only number, space or comma characters</mat-error>
+                <mat-error *ngIf="nodeValues.invalid && nodeValues.errors.pattern">Must contain only numbers, separated by a comma</mat-error>
             </mat-form-field>
 
             <label style="margin-top: 30px;">Position to add nodes to:</label>
