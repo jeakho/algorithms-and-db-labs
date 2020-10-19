@@ -41,7 +41,7 @@ export class AddingItemsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.addingItemsForm = this.fb.group({
-      itemValues: [this.model.itemValues, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]]
+      itemValues: [this.model.itemValues, [Validators.required, Validators.pattern(/^ *(?:-?\d+(?:(?: *, *)(?=[-\d])|(?: *)(?=$)))+$/)]]
     })
 
     this.subscriptions.push(

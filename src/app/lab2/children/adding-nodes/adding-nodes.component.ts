@@ -48,7 +48,7 @@ export class AddingNodesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.addingNodesForm = this.fb.group({
-      nodeValues: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]],
+      nodeValues: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^ *(?:-?\d+(?:(?: *, *)(?=[-\d])|(?: *)(?=$)))+$/)]],
       selectedRadio: this.model.selectedRadio,
       insertionPosition: [{ value: this.model.insertionPosition, disabled: this.isInsertionPositionDisabled() }, [Validators.pattern(/^-?\d+$/)]]
     });

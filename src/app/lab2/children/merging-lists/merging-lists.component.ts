@@ -37,7 +37,7 @@ export class MergingListsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.mergingListsForm = this.fb.group({
-      nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]]
+      nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^ *(?:-?\d+(?:(?: *, *)(?=[-\d])|(?: *)(?=$)))+$/)]]
     })
 
     this.subscriptions.push(this.mergingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model)));

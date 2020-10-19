@@ -11,7 +11,7 @@
                     placeholder="Ex. 1, 2, 3"
                 >
                 <mat-error *ngIf="itemValues.invalid && itemValues.errors.required">Required field</mat-error>
-                <mat-error *ngIf="itemValues.invalid && itemValues.errors.pattern">Must contain only number, space or comma characters</mat-error>
+                <mat-error *ngIf="itemValues.invalid && itemValues.errors.pattern">Must contain only numbers, separated by a comma</mat-error>
             </mat-form-field>
             
         </mat-card-content>

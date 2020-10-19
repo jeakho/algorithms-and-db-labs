@@ -37,7 +37,7 @@ export class IntersectingListsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.intersectingListsForm = this.fb.group({
-      nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^[-\d, ]*$/)]]
+      nodeValuesStr: [this.model.nodeValuesStr, [Validators.required, Validators.pattern(/^ *(?:-?\d+(?:(?: *, *)(?=[-\d])|(?: *)(?=$)))+$/)]]
     })
 
     this.subscriptions.push(this.intersectingListsForm.valueChanges.subscribe(model => Object.assign(this.model, model)));
