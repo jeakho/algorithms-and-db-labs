@@ -1,5 +1,5 @@
-<mat-grid-list cols="1" rowHeight="4.93%" class="fill-height">
-    <mat-grid-tile rowspan="9">
+<mat-grid-list cols="1" rowHeight="2.52%" class="fill-height">
+    <mat-grid-tile rowspan="14">
         <div *ngIf="qs.queueLength" class="queue-representation__container fill-height fill-width">
             <div *ngFor="let el of queueItems; index as ind">
                 <button mat-fab color="primary" disableRipple="true"
@@ -9,10 +9,7 @@
         </div>
         <div *ngIf="!qs.queueLength" class="mat-display-3 empty-queue-message">Empty Queue</div>
     </mat-grid-tile>
-    <mat-grid-tile rowspan="2">
-
-    </mat-grid-tile>
-    <mat-grid-tile rowspan="9">
+    <mat-grid-tile rowspan="24">
         <div class="fill-height fill-width">
             <mat-grid-list cols="4" rowHeight="fit" gutterSize="50px" class="fill-height">
                 <mat-grid-tile>
