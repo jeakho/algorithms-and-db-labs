@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 
-import { Lab2Module } from './lab2/lab2.module'
-import { Lab3Module } from './lab3/lab3.module'
-import { Lab4Module } from './lab4/lab4.module'
+import { Lab2Module } from './lab2/lab2.module';
+import { Lab3Module } from './lab3/lab3.module';
+import { Lab4Module } from './lab4/lab4.module';
+import { Lab5Module } from './lab5/lab5.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Lab4Module } from './lab4/lab4.module'
     LayoutModule,
     Lab2Module,
     Lab3Module,
-    Lab4Module
+    Lab4Module,
+    Lab5Module
   ],
   providers: [],
   bootstrap: [AppComponent]
