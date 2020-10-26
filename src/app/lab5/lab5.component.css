@@ -1,0 +1,70 @@
+.lab5-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab5-card {
+    width: 600px;
+    height: 800px;
+    background-color:   #f8f8f8  ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.representation-container {
+    flex-grow: 4;
+    display: flex;
+    justify-content: center;
+}
+
+.representation-content {
+    width: 70%;
+}
+
+.representation-content-container {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.representation-clear-container {
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.manipulations-form-container {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.manipulation-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.value-field {
+    margin-bottom: 10px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.option {
+    margin: 5px;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
+
+.bounded-top {
+    border-top: 1px solid black;
+}

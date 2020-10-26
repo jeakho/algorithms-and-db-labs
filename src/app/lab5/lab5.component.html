@@ -1,0 +1,35 @@
+<div class="fill-height fill-width lab5-container">
+    <mat-card class="lab5-card">
+        <div class="representation-container fill-width">
+            <select multiple="multiple" class="fill-height representation-content">
+                <option *ngFor="let record of hashRecords; index as ind" value="" class="representation-line">
+                    <div class="representation-content-container" [class.bounded-top]="ind > 0">
+                        <div>{{ record[0] }}</div>
+                        <div class="spacer"></div>
+                        <div>{{ record[1] }}</div>
+                    </div>
+                </option>
+            </select>
+        </div>
+        <div class="representation-clear-container fill-width">
+            <button mat-raised-button color="primary" (click)="clearList()">Clear</button>
+        </div>
+        <div class="manipulations-form-container fill-width">
+            <form [formGroup]="hashingForm" class="manipulation-form" (ngSubmit)="processHashing()">
+                <mat-form-field appearance="outline" class="value-field">
+                    <mat-label>Value to hash</mat-label>
+                    <input type="text" matInput required placeholder="Ex. 1" formControlName="key">
+                    <mat-error *ngIf="key.invalid && key.errors.required">Required field</mat-error>
+                </mat-form-field>
+
+                <label>Select hashing method:</label>
+                <mat-radio-group color="primary" class="options" formControlName="selectedRadio">
+                    <mat-radio-button class="option" [value]="1">Division</mat-radio-button>
+                    <mat-radio-button class="option" [value]="2">Multiplication</mat-radio-button>
+                    <mat-radio-button class="option" [value]="3">String keys</mat-radio-button>
+                </mat-radio-group>
+                <button mat-raised-button type="submit" color="primary" class="submit-button">Add hash</button>
+            </form>
+        </div>
+    </mat-card>
+</div>
