@@ -1,10 +1,12 @@
-.lab5-container {
+.lab6__wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.lab5-card {
+.lab6__container {
     width: 600px;
     height: 800px;
     background-color: #f8f8f8  ;
@@ -13,35 +15,37 @@
     align-items: center;
 }
 
-.representation-container {
+.representation__container {
     flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.representation-content {
     width: 70%;
 }
 
-.representation-content-container {
+.representation-line__container {
     display: flex;
     align-items: center;
     height: 30px;
 }
 
-.representation-clear-container {
+.bounded-top {
+    border-top: 1px solid black;
+}
+
+.stateless-operation__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: 15px;
-    display: flex;
-    justify-content: center;
 }
 
-.manipulations-form-container {
-    flex-grow: 0;
-    display: flex;
-    justify-content: center;
+.menu-actions__container {
+    justify-content: flex-end;
 }
 
-.manipulation-form {
+.manipulations-form {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -51,7 +55,7 @@
     margin-bottom: 10px;
 }
 
-.options {
+.options__container {
     display: flex;
     flex-direction: column;
     margin: 15px 0;
@@ -63,8 +67,4 @@
 
 .submit-button {
     margin-top: 10px;
-}
-
-.bounded-top {
-    border-top: 1px solid black;
 }

@@ -1,0 +1,25 @@
+<div class="component__wrapper">
+    <div class="header__wrapper"><h1 mat-dialog-title>Hash table config</h1></div>
+    <div mat-dialog-content class="content__wrapper">
+        <form [formGroup]="formGroup">
+            <mat-form-field appearance="fill" class="fill-width">
+                <mat-label>Table length</mat-label>
+                <input type="text" formControlName="formFieldValue" matInput required
+                    placeholder="Ex. 10"
+                >
+                <mat-error *ngIf="formFieldValue.invalid && formFieldValue.errors.required">Required field</mat-error>
+                <mat-error *ngIf="formFieldValue.invalid && formFieldValue.errors.pattern">Must be a non-negative integer</mat-error>
+            </mat-form-field>
+    
+            <mat-radio-group color="primary" class="options__container" formControlName="selectedRadio">
+                <mat-radio-button class="option" [value]="1">Open addressing</mat-radio-button>
+                <mat-radio-button class="option" [value]="2">Closed addressing</mat-radio-button>
+            </mat-radio-group>
+        </form>
+    </div>
+    <div mat-dialog-actions class="actions__wrapper">
+        <button mat-button (click)="onCloseWithRehash()">Rehash all</button>
+        <button mat-button (click)="onCloseWithoutRehash()">Don't rehash</button>
+        <button mat-button (click)="onCancel()">Cancel</button>
+    </div>
+</div>

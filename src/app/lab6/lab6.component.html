@@ -1,0 +1,43 @@
+<div class="lab6__wrapper">
+    <mat-card class="lab6__container">
+        <div class="stateless-operation__container menu-actions__container">
+            <button class="mat-icon-button" (click)="openTableSettings()">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </div>
+        <div style="margin-bottom: 5px;">{{ currentlyAvailableHashTableName }}</div>
+        <div class="representation__container">
+            <select multiple="multiple" class="fill-height fill-width">
+                <option *ngFor="let entry of tableContent; index as ind" value="">
+                    <div class="representation-line__container" [class.bounded-top]="ind > 0">
+                        <div>{{ entry[0] }}</div>
+                        <div class="spacer"></div>
+                        <div>{{ getRecodsValueTextRepresentation(entry[1]) }}</div>
+                    </div>
+                </option>
+            </select>
+        </div>
+        <div class="stateless-operation__container">
+            <button mat-raised-button color="primary" (click)="clearTable()">Clear</button>
+        </div>
+        <div class="manipulations-form__container">
+            <form [formGroup]="hashTableClassForm" class="manipulations-form" (ngSubmit)="performOperation()">
+                <mat-form-field appearance="outline" class="value-field">
+                    <mat-label>Value</mat-label>
+                    <input type="text" matInput required placeholder="Ex. 'abc'" formControlName="key">
+                    <mat-error *ngIf="key.invalid && key.errors.required">Required field</mat-error>
+                </mat-form-field>
+
+                <label>Select operation:</label>
+                <mat-radio-group color="primary" class="options__container" formControlName="selectedRadio">
+                    <mat-radio-button class="option" [value]="1">Add</mat-radio-button>
+                    <mat-radio-button class="option" [value]="2">Remove</mat-radio-button>
+                    <mat-radio-button class="option" [value]="3">Find</mat-radio-button>
+                </mat-radio-group>
+                <button mat-raised-button type="submit" color="primary" class="submit-button"
+                    [disabled]="!hashTableClassForm.valid"
+                >Perform</button>
+            </form>
+        </div>
+    </mat-card>
+</div>
