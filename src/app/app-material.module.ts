@@ -12,7 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 @NgModule({
   declarations: [],
@@ -30,7 +31,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   exports: [
     MatTabsModule,
@@ -46,7 +48,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ]
 })
 export class AppMaterialModule { }

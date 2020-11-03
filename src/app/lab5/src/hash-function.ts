@@ -12,7 +12,7 @@ export function hashDivision(x: number): number {
 }
 
 export function hashMultiplication(x: number): number {
-    return (x * MULTIPLICATION_A) >>> (MULTIPLICATION_W - MULTIPLICATION_K);
+    return (x * MULTIPLICATION_A) >>> (MULTIPLICATION_W - MULTIPLICATION_K)
 }
 
 export function hashString(s: string): number {
@@ -22,5 +22,5 @@ export function hashString(s: string): number {
         result = (result & STRING_KEYS_MASK) ^ (result << STRING_KEYS_SHIFT) ^ s.charCodeAt(i);
     }
 
-    return result >>> 0;
+    return (result >>> 0);
 }
