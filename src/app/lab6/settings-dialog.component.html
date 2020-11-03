@@ -18,8 +18,8 @@
         </form>
     </div>
     <div mat-dialog-actions class="actions__wrapper">
-        <button mat-button (click)="onCloseWithRehash()">Rehash all</button>
-        <button mat-button (click)="onCloseWithoutRehash()">Don't rehash</button>
+        <button mat-button [disabled]="!formFieldValue.valid || !selectedRadio.valid" (click)="onCloseWithRehash()">Rehash all</button>
+        <button mat-button [disabled]="!formFieldValue.valid || !selectedRadio.valid" (click)="onCloseWithoutRehash()">Don't rehash</button>
         <button mat-button (click)="onCancel()">Cancel</button>
     </div>
 </div>
