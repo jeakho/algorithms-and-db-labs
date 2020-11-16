@@ -89,7 +89,7 @@ export class TreeDrawingService<T> {
     this.graphics.clear();
 
     if (!this.tree.size) {
-      this.graphics.fillText("<<EMPTY TREE>>", this.graphics.fieldWidth / 2, this.graphics.fieldHeight / 2.4, { fontSize: 100, horizontalAlign: 'center', verticalAlign: 'middle', color: '#dcdcdc' });
+      this.graphics.fillText("<<EMPTY TREE>>", this.graphics.fieldWidth / 2, this.graphics.fieldHeight / 2.4, { fontSize: 60, horizontalAlign: 'center', verticalAlign: 'middle', color: '#dcdcdc' });
       return;
     }
 
