@@ -11,13 +11,12 @@ export class TreeDrawingService<T> {
   private tree: BinaryTree<T>;
   private graphics: Graphics;
 
-  private distanceToChild = new Point(150, 150);
   private nodeRepresenationConfig = {
     edge: {
-      borderWidth: 3,
+      borderWidth: 2,
     },
     text: {
-      fontSize: 40,
+      fontSize: 25,
       verticalAlign: 'middle' as "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom", 
       horizontalAlign: 'center' as "left" | "right" | "center" | "start" | "end",
     },
@@ -25,7 +24,7 @@ export class TreeDrawingService<T> {
   }
   private emphasizeConfig = {
     color: '#ff0000',
-    borderWidth: 3
+    borderWidth: this.nodeRepresenationConfig.edge.borderWidth
   }
   private connectionRepresentationConfig = {
     width: 1
