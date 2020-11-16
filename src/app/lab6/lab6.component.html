@@ -8,7 +8,7 @@
         <div style="margin-bottom: 5px;">{{ currentlyAvailableHashTableName }}</div>
         <div class="representation__container">
             <select multiple="multiple" class="fill-height fill-width">
-                <option *ngFor="let entry of tableContent; index as ind" value="">
+                <option *ngFor="let entry of tableContent; index as ind" value="" style="font-size: 16px;">
                     <div class="representation-line__container" [class.bounded-top]="ind > 0">
                         <div>{{ entry[0] }}</div>
                         <div class="spacer"></div>

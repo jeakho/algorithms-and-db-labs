@@ -59,8 +59,8 @@ export class Lab6Component implements OnInit, OnDestroy {
   ) {
 
     this.hashTableTypeToFactoryGetMethod = new Map([
-      [HashTableType.OPEN_ADDRESSING, this.htfs.getChainedHashTable],
-      [HashTableType.CLOSED_ADDRESSING, this.htfs.getOpenScatterHashTable]
+      [HashTableType.CLOSED_ADDRESSING, this.htfs.getChainedHashTable],
+      [HashTableType.OPEN_ADDRESSING, this.htfs.getOpenScatterHashTable]
     ]);
 
     this.hashTableTypeToInitMethod = new Map([

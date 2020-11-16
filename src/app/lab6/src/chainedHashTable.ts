@@ -17,16 +17,16 @@ export class ChainedHashTable<T> extends HashTable<T> {
     }
 
     public insert(key: string, value: T) {
-        if (this.fillFactor > 0.85) {
-            this.resizeTwice();
-        }
-
         const code = this.hash(key);
 
         if (this.table[code].find(param => param[0] === key)) throw new Error(`An element with key "${key}" already exists!`);
 
         this.table[code].addToTail([key, value]);
         this.recordsAmount++;
+
+        if (this.fillFactor > 0.85) {
+            this.resizeTwice();
+        }
     }
     
     public remove(key: string): T | undefined {

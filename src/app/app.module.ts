@@ -12,6 +12,7 @@ import { Lab3Module } from './lab3/lab3.module';
 import { Lab4Module } from './lab4/lab4.module';
 import { Lab5Module } from './lab5/lab5.module';
 import { Lab6Module } from './lab6/lab6.module';
+import { Lab8Module } from './lab8/lab8.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Lab6Module } from './lab6/lab6.module';
     Lab3Module,
     Lab4Module,
     Lab5Module,
-    Lab6Module
+    Lab6Module,
+    Lab8Module
   ],
   providers: [],
   bootstrap: [AppComponent]
