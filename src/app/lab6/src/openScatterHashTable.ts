@@ -47,10 +47,6 @@ export class OpenScatterHashTable<T> extends HashTable<T> {
     }
 
     public insert(key: string, value: T): void {
-        if (this.fillFactor > 0.85) {
-            this.resizeTwice();
-        }
-
         const unoccupiedPos = this.findUnoccupied(key);
 
         if (unoccupiedPos === -1) throw new Error("The table is full!");
@@ -58,6 +54,10 @@ export class OpenScatterHashTable<T> extends HashTable<T> {
         this.table[unoccupiedPos].data = [key, value];
         this.table[unoccupiedPos].state = "occupied";
         this.recordsAmount++;
+
+        if (this.fillFactor > 0.85) {
+            this.resizeTwice();
+        }
     }
 
     public remove(key: string): T | undefined {
