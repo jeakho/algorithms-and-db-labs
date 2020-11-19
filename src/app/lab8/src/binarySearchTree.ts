@@ -1,7 +1,6 @@
-import { TreeNode } from './treeNode'
-import { Queue } from './queue/queue'
-import { Point } from './point';
+import { TreeNode } from './treeNode';
 import { BinaryTree } from './binaryTree';
+import { cloneDeep } from 'lodash'
 
 export class BinarySearchTree extends BinaryTree<number> {
     root: TreeNode<number> | null = null;
@@ -40,18 +39,22 @@ export class BinarySearchTree extends BinaryTree<number> {
 
         if (!curNode.right) {
             if (curNode.left) this.promote(curNode.left);
-            else this.detachFromParent(curNode);
+            else this.removeSubtree(curNode);
 
             this.size--;
             return;
         }
 
-        const nextNode = this.nextNode(curNode) as TreeNode<number>;
+        const nextNode = this.nextNode(curNode) as TreeNode<number>
+        const nextNodeClone = cloneDeep(nextNode);
+
+        this.replace(curNode, nextNodeClone);
 
         if (nextNode.right) this.promote(nextNode.right);
-        this.replace(curNode, nextNode);
+        else this.removeSubtree(nextNode);
 
         this.size--;
+
         return;
     }
 
@@ -85,9 +88,7 @@ export class BinarySearchTree extends BinaryTree<number> {
     private replace(source: TreeNode<number>, target: TreeNode<number>) {
         if (source === source.parent?.left) source.parent.left = target;
         else if (source === source.parent?.right) source.parent.right = target;
-
-        this.detachFromParent(target);
-
+        
         [target.parent, target.left, target.right] = [source.parent, source.left, source.right];
 
         if (target.left) target.left.parent = target;
@@ -97,9 +98,18 @@ export class BinarySearchTree extends BinaryTree<number> {
     }
 
     private promote(node: TreeNode<number>): void {
-        if (!node.parent) return;
+        if (!node.parent?.parent) {
+            this.root = node;
+            this.root.parent = null;
+            return;
+        }
 
-        this.replace(node.parent, node);
+        const parent = node.parent;
+
+        if (node.parent === parent.parent?.left) parent.parent.left = node;
+        else if (node.parent === parent.parent?.right) parent.parent.right = node;
+
+        node.parent = parent.parent;
     }
 
     private nextNode(node: TreeNode<number>): TreeNode<number> | null {
@@ -113,9 +123,11 @@ export class BinarySearchTree extends BinaryTree<number> {
         return node;
     }
 
-    private detachFromParent(node: TreeNode<number>) {
+    private removeSubtree(node: TreeNode<number>) {
         if (node === node.parent?.left) node.parent.left = null;
         else if (node === node.parent?.right) node.parent.right = null;
+
+        this.root = null;
     }
 
     private firstRightParent(node: TreeNode<number>): TreeNode<number> | null {
