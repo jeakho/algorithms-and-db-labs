@@ -127,7 +127,7 @@ export class BinarySearchTree extends BinaryTree<number> {
         if (node === node.parent?.left) node.parent.left = null;
         else if (node === node.parent?.right) node.parent.right = null;
 
-        this.root = null;
+        if (!node.parent) this.root = null;
     }
 
     private firstRightParent(node: TreeNode<number>): TreeNode<number> | null {

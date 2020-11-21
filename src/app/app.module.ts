@@ -13,6 +13,7 @@ import { Lab4Module } from './lab4/lab4.module';
 import { Lab5Module } from './lab5/lab5.module';
 import { Lab6Module } from './lab6/lab6.module';
 import { Lab8Module } from './lab8/lab8.module';
+import { TouchedErrorStateMatcherService } from './error-state-matchers/touched-error-state-matcher.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { Lab8Module } from './lab8/lab8.module';
     Lab6Module,
     Lab8Module
   ],
-  providers: [],
+  providers: [
+    { provide: 'TouchedErrorStateMatcher', useClass: TouchedErrorStateMatcherService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

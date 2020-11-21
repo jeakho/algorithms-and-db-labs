@@ -3,11 +3,11 @@
         <form [formGroup]="treeControlFormGroup" class="form" (ngSubmit)="performAction()">
             <mat-form-field appearance="fill">
                 <mat-label>Item value</mat-label>
-                <input type="text" formControlName="itemValue" matInput required
-                    placeholder="Ex. 1"
+                <input type="text" formControlName="itemValue" matInput
+                    placeholder="Ex. 1" [errorStateMatcher]="errorStateMatcher"
                 >
-                <mat-error *ngIf="itemValue.invalid && itemValue.errors.required">Required field</mat-error>
-                <mat-error *ngIf="itemValue.invalid && itemValue.errors.pattern">Must be a number</mat-error>
+                <mat-error *ngIf="itemValue.hasError('required')">Required field</mat-error>
+                <mat-error *ngIf="itemValue.hasError('pattern')">Must be a number</mat-error>
             </mat-form-field>
 
             <mat-radio-group formControlName="selectedRadio" class="options" color="primary">
