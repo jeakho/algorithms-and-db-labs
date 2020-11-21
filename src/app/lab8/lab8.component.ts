@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild, Inject } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { TreeDrawingService } from './services/tree-drawing.service';
 import { BinarySearchTree } from './src/binarySearchTree';
@@ -11,6 +12,8 @@ import { BinarySearchTree } from './src/binarySearchTree';
 })
 export class Lab8Component implements OnInit {
   @ViewChild('canvas', { static: true }) canvasRef: ElementRef<HTMLCanvasElement>;
+
+  errorStateMatcher: ErrorStateMatcher
 
   treeControlFormGroup: FormGroup
   private model = {
@@ -35,17 +38,25 @@ export class Lab8Component implements OnInit {
 
   constructor(
     private tds: TreeDrawingService<number>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject('TouchedErrorStateMatcher') errorStateMatcher: ErrorStateMatcher
   ) {
     this.radioBtnToHashTableOperation = new Map([
       [1, this.tds.insertItem.bind(this.tds)],
       [2, this.tds.removeItem.bind(this.tds)],
       [3, this.tds.findItem.bind(this.tds)]
     ])
+
+    this.errorStateMatcher = errorStateMatcher;
   }
 
   performAction() {
     this.radioBtnToHashTableOperation.get(this.model.selectedRadio)(+this.model.itemValue);
+
+    this.itemValue.setValue('');
+    this.itemValue.markAsUntouched();
+
+    console.log(this.itemValue.touched);
   }
 
   clearTree() {
