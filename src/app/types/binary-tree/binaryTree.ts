@@ -1,18 +1,24 @@
-import { Queue } from './queue/queue';
+import { Queue } from '../queue/queue';
+import { IBinaryTree } from './IBinaryTree';
 import { TreeNode } from './treeNode';
 
-export abstract class BinaryTree<T> {
-    size: number = 0;
+export abstract class BinaryTree<T> implements IBinaryTree<T> {
     protected root: TreeNode<T> | null = null;
 
+    constructor(...items: T[]) {
+        items.forEach(item => this.insert(item));
+    }
 
-    constructor(...items: T[]) { }
+    getRoot() {
+        return this.root;
+    }
 
+    abstract isEmpty(): boolean;
     abstract insert(...items: T[]): void;
     abstract remove(item: T): void;
     abstract find(item: T): T | undefined;
     abstract findNode(item: T): TreeNode<T> | null;
-    abstract clear(): void
+    abstract clear(): void;
     
     // findPreorder(item: T): T | undefined {
     //     for (let cur of this.preorderTraversalIterator()) {

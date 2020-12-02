@@ -3,31 +3,29 @@ import { BinaryTree } from './binaryTree';
 import { cloneDeep } from 'lodash'
 
 export class BinarySearchTree extends BinaryTree<number> {
-    root: TreeNode<number> | null = null;
-    size: number = 0;
-
+    
     constructor(...items: number[]) {
-        super();
-        items.forEach(item => this.insert(item));
+        super(...items);
+    }
+
+    isEmpty() {
+        return !this.root
     }
 
     insert(item: number): BinarySearchTree {
         const parent = this.findNode(item);
 
         if (!parent) {
-            this.root = new TreeNode(item);
-            this.size++;
+            this.root = new TreeNode(item, 1);
 
             return this;
         }
 
         if (parent?.data === item) throw new Error(`The node with value ${item} is already in the tree!`);
 
-        const newNode = new TreeNode<number>(item, parent);
+        const newNode = new TreeNode<number>(item, 1, parent);
         if (item < parent.data) parent.left = newNode;
         else parent.right = newNode;
-
-        this.size++;
 
         return this;
     }
@@ -41,7 +39,6 @@ export class BinarySearchTree extends BinaryTree<number> {
             if (curNode.left) this.promote(curNode.left);
             else this.removeSubtree(curNode);
 
-            this.size--;
             return;
         }
 
@@ -53,15 +50,13 @@ export class BinarySearchTree extends BinaryTree<number> {
         if (nextNode.right) this.promote(nextNode.right);
         else this.removeSubtree(nextNode);
 
-        this.size--;
-
         return;
     }
 
     find(item: number): number | undefined {
-        const val = this.findNode(item);
+        const node = this.findNode(item);
 
-        return val?.data === item ? item : void 0;
+        return node?.data === item ? item : void 0;
     }
 
     
@@ -82,7 +77,6 @@ export class BinarySearchTree extends BinaryTree<number> {
 
     clear(): void {
         this.root = null;
-        this.size = 0;
     }
 
     private replace(source: TreeNode<number>, target: TreeNode<number>) {
@@ -112,7 +106,7 @@ export class BinarySearchTree extends BinaryTree<number> {
         node.parent = parent.parent;
     }
 
-    private nextNode(node: TreeNode<number>): TreeNode<number> | null {
+    protected nextNode(node: TreeNode<number>): TreeNode<number> | null {
         if (!node.right) return this.firstRightParent(node);
         
         node = node.right

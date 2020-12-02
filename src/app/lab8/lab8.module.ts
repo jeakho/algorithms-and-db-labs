@@ -6,13 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    Lab8Component
+    
   ],
   imports: [
     CommonModule,
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: []
 })
 export class Lab8Module { }

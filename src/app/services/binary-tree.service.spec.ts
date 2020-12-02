@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TreeDrawingService } from './tree-drawing.service';
+import { BinaryTreeService } from './binary-tree.service';
 
-describe('TreeDrawingService', () => {
-  let service: TreeDrawingService;
+describe('BinaryTreeService', () => {
+  let service: BinaryTreeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TreeDrawingService);
+    service = TestBed.inject(BinaryTreeService);
   });
 
   it('should be created', () => {
