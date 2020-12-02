@@ -1,4 +1,4 @@
-import { LinkedList } from "./linkedList";
+import { LinkedList } from "../linked-list/linkedList";
 
 export class Queue<T = any> {
     linkedList: LinkedList<T>;
