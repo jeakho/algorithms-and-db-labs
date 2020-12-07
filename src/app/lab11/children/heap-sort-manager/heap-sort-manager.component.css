@@ -29,3 +29,7 @@ mat-card-title {
 .manipulations-card-actions-button {
     width: 100%
 }
+
+.output__wrapper {
+    margin-top: 10px;
+}
