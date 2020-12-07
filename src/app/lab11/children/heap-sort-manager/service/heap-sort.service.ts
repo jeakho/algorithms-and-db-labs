@@ -1,4 +1,4 @@
-import { HeapSort } from '@/app/types/heap-sort/heapSort';
+import { HeapSort } from '../../../../../app/types/heap-sort/heapSort';
 import { Injectable } from '@angular/core';
 
 @Injectable({

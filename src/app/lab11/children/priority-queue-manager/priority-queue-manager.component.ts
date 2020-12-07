@@ -1,7 +1,7 @@
 import { TreeRepresentationApi } from '../../../../app/api/tree-representation.api';
 import { TreeRepConfig } from '../../../../app/state/treeRepConfig';
-import { SimpleBinaryTree } from '@/app/types/binary-tree/simpleBinaryTree';
-import { PriorityQueueChangesType } from '@/app/types/priority-queue/changesType';
+import { SimpleBinaryTree } from '../../../../app/types/binary-tree/simpleBinaryTree';
+import { PriorityQueueChangesType } from '../../../../app/types/priority-queue/changesType';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
