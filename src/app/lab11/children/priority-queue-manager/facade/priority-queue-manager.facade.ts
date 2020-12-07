@@ -1,7 +1,7 @@
-import { PriorityQueueWrapper } from '@/app/services/priority-queue-wrapper.service';
-import { INotifyChanges } from '@/app/types/ICangesNotifications';
-import { PriorityQueueChangesType } from '@/app/types/priority-queue/changesType';
-import { IPriorityQueue } from '@/app/types/priority-queue/IPriorityQueue';
+import { PriorityQueueWrapper } from '../../../../../app/services/priority-queue-wrapper.service';
+import { INotifyChanges } from '../../../../../app/types/ICangesNotifications';
+import { PriorityQueueChangesType } from '../../../../../app/types/priority-queue/changesType';
+import { IPriorityQueue } from '../../../../../app/types/priority-queue/IPriorityQueue';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
