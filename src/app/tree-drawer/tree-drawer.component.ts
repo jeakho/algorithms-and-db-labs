@@ -127,7 +127,7 @@ export class TreeDrawerComponent implements OnInit, OnChanges {
   }
 
   private printDefault(message: string) {
-    this.graphics.fillText(message, this.graphics.fieldWidth / 2, this.graphics.fieldHeight / 2.4, { fontSize: 100, horizontalAlign: 'center', verticalAlign: 'middle', color: '#dcdcdc' });
+    this.graphics.fillText(message, this.graphics.fieldWidth / 2, this.graphics.fieldHeight / 2.4, { fontSize: 72, horizontalAlign: 'center', verticalAlign: 'middle', color: '#dcdcdc' });
   }
 
   private calculateRootNodeCoordinates() {

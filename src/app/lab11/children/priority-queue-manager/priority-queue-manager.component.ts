@@ -1,5 +1,5 @@
-import { TreeRepresentationApi } from '@/app/api/tree-representation.api';
-import { TreeRepConfig } from '@/app/state/treeRepConfig';
+import { TreeRepresentationApi } from '../../../../app/api/tree-representation.api';
+import { TreeRepConfig } from '../../../../app/state/treeRepConfig';
 import { SimpleBinaryTree } from '@/app/types/binary-tree/simpleBinaryTree';
 import { PriorityQueueChangesType } from '@/app/types/priority-queue/changesType';
 import { Component, OnInit } from '@angular/core';
@@ -61,9 +61,14 @@ export class PriorityQueueManagerComponent implements OnInit {
 
   performAction() {
     this.radioBtnToHashTableOperation.get(this.model.selectedRadio)(+this.model.itemValue);
+  }
 
-    // this.itemValue.setValue('');
-    // this.itemValue.markAsUntouched();
+  extractMax() {
+    try {
+      this.pqmf.extractMax();
+    } catch(error) {
+      alert(error);
+    }
   }
 
   insert() {

@@ -3,10 +3,10 @@ export const TreeRepConfig = {
 
     node: {
         edge: {
-            borderWidth: 3,
+            borderWidth: 2,
         },
         text: {
-            fontSize: 40,
+            fontSize: 25,
             verticalAlign: 'middle' as "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom", 
             horizontalAlign: 'center' as "left" | "right" | "center" | "start" | "end",
         },
@@ -20,6 +20,6 @@ export const TreeRepConfig = {
     foundNode: {
         radius: 30,
         color: '#ff0000',
-        borderWidth: 3
+        borderWidth: 2
     }
 }
