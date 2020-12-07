@@ -1,0 +1,36 @@
+.mat-radio-group {
+    margin-left: 20px;
+}
+
+.priority-queue-manager__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls__wrapper {
+    width: 100%;
+    height: 150px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tree-drawer__wrapper {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+}
+
+.tree-drawer__container {
+    margin-top: 40px;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.option {
+    margin-right: 30px;
+}

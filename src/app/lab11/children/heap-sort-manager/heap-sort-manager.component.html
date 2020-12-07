@@ -1,0 +1,28 @@
+<form class="manipulations-form" [formGroup]="heapSortForm" (ngSubmit)="processSorting()">
+    <mat-card class="manipulations-card">
+        <mat-card-title>
+            Heap Sort
+        </mat-card-title>
+    
+        <mat-card-content flex class="manipulations-card-content">
+            <mat-form-field>
+                <mat-label>Array to sort</mat-label>
+                <input matInput required formControlName="arrayAsString" placeholder="Ex. 10">
+                <mat-error *ngIf="arrayAsString.hasError('required')">Required field</mat-error>
+                <mat-error *ngIf="arrayAsString.hasError('pattern')">Must contain only numbers, separated by a comma</mat-error>
+            </mat-form-field>
+
+            <div class="output__wrapper">
+                <div><span><i>Sorted array:</i> [{{ sortedArrayAsString }}]</span></div>
+            </div>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-raised-button color="primary"
+                type="submit"
+                [disabled]="!heapSortForm.valid"
+                class="manipulations-card-actions-button"
+            >Sort</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

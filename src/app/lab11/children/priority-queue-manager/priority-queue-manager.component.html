@@ -1,0 +1,39 @@
+<div class="component__wrapper priority-queue-manager__wrapper">
+    <div class="controls__wrapper">
+        <form [formGroup]="heapControlFormGroup" class="form" (ngSubmit)="performAction()">
+            <mat-form-field>
+                <mat-label>Item value</mat-label>
+                <input type="text" formControlName="itemValue" matInput
+                    placeholder="Ex. 1"
+                >
+                <mat-error *ngIf="itemValue.hasError('required')">Required field</mat-error>
+                <mat-error *ngIf="itemValue.hasError('pattern')">Must be a number</mat-error>
+            </mat-form-field>
+
+            <mat-radio-group formControlName="selectedRadio" class="options" color="primary">
+                <mat-radio-button [value]="1" class="option">Insert</mat-radio-button>
+                <mat-radio-button [value]="2" class="option">Remove</mat-radio-button>
+                <mat-radio-button [value]="3" class="option">Find</mat-radio-button>
+            </mat-radio-group> 
+
+            <button mat-raised-button type="submit" color="primary"
+                [disabled]="!heapControlFormGroup.valid"
+                class="manipulations-card-actions-button"
+            >
+                Perform
+            </button>
+        </form>
+        <button mat-raised-button color="primary" (click)="clear()">Clear</button>
+    </div>
+
+    <div class="tree-drawer__wrapper">
+        <div class="tree-drawer__container">
+            <app-tree-drawer
+                style="display: inline-block;"
+                class="fill-width fill-height"
+                [binaryTree]="heapTree"
+                [config]="treeRepresentationConfig"
+            ></app-tree-drawer>
+        </div>
+    </div>
+</div>

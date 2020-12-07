@@ -18,13 +18,16 @@ import { TouchedErrorStateMatcherService } from './error-state-matchers/touched-
 import { TreeControllerComponent } from './tree-controller/tree-controller.component';
 import { Lab10Component } from './lab10/lab10.component';
 import { Lab8Component } from './lab8/lab8.component';
+import { Lab11Module } from './lab11/lab11.module';
+import { TreeDrawerComponent } from './tree-drawer/tree-drawer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeControllerComponent,
     Lab10Component,
-    Lab8Component
+    Lab8Component,
+    //TreeDrawerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { Lab8Component } from './lab8/lab8.component';
     Lab4Module,
     Lab5Module,
     Lab6Module,
-    Lab8Module
+    Lab8Module,
+    Lab11Module
   ],
   providers: [
     { provide: 'TouchedErrorStateMatcher', useClass: TouchedErrorStateMatcherService }
